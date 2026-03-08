@@ -1,0 +1,199 @@
+:root {
+  --bg-a: #0b1024;
+  --bg-b: #1e2c4d;
+  --panel: rgba(10, 14, 27, 0.88);
+  --line: rgba(255, 255, 255, 0.2);
+  --text: #f8f9ff;
+  --muted: #bac6df;
+  --accent: #50e3c2;
+  --danger: #ff665a;
+  --warn: #ffce54;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 20% 15%, #2d3f68 0, var(--bg-a) 45%, #070a15 100%);
+}
+
+.app-shell {
+  width: min(1100px, 100vw);
+  margin: 0 auto;
+  padding: 12px;
+  position: relative;
+}
+
+#game-canvas {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--bg-b), #111826);
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 4;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.screen h1,
+.screen h2 {
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(360px, 80vw);
+  text-align: left;
+}
+
+input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #2ddda8, var(--accent));
+  color: #06231c;
+  border-color: transparent;
+}
+
+.upgrade-grid {
+  display: grid;
+  gap: 10px;
+  width: min(500px, 100%);
+}
+
+.hud {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 8px;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.88rem;
+}
+
+.hud span {
+  color: var(--muted);
+}
+
+.mobile-controls {
+  position: absolute;
+  inset: auto 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.move-pad {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.move-pad button,
+.fire-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  padding: 0;
+  pointer-events: auto;
+}
+
+.fire-btn {
+  width: 84px;
+  height: 84px;
+}
+
+@media (max-width: 900px) {
+  .hud {
+    grid-template-columns: repeat(2, auto);
+    font-size: 0.84rem;
+    max-width: 62vw;
+  }
+}
+
+@media (max-width: 700px) {
+  .overlay {
+    padding: 20px;
+    inset: 8px;
+  }
+
+  .app-shell {
+    padding: 8px;
+  }
+
+  #game-canvas {
+    border-radius: 10px;
+  }
+
+  .hud {
+    left: 12px;
+    top: 12px;
+    gap: 4px 8px;
+  }
+
+  .mobile-controls {
+    inset: auto 12px 12px;
+  }
+}

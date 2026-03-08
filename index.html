@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robot Gladiators</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA_Compatible" content="ie=edge">
+  <title>Robo Gladiator Arena</title>
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-    <script src="./assets/js/game.js"></script>  
+  <main class="app-shell">
+    <canvas id="game-canvas" width="960" height="540" aria-label="Robo Gladiator Arena"></canvas>
+
+    <section id="start-screen" class="overlay screen active">
+      <h1>Robo Gladiator Arena</h1>
+      <p>Survive waves, dodge hazards, earn scrap, and build the ultimate battle bot.</p>
+      <div class="form-row">
+        <label for="robot-name">Robot Name</label>
+        <input id="robot-name" maxlength="16" placeholder="RX-01">
+      </div>
+      <button id="start-btn" class="btn primary">Start Arena</button>
+      <p class="hint">Desktop: WASD/Arrows + Space. Mobile: touch controls and tap to fire.</p>
+    </section>
+
+    <section id="upgrade-screen" class="overlay screen hidden">
+      <h2>Upgrade Hangar</h2>
+      <p id="upgrade-summary"></p>
+      <div class="upgrade-grid">
+        <button id="upg-chassis" class="btn">Chassis (+max health)</button>
+        <button id="upg-weapon" class="btn">Weapon (+damage)</button>
+        <button id="upg-sensor" class="btn">Sensor (+crit +dodge)</button>
+      </div>
+      <button id="next-round-btn" class="btn primary">Next Round</button>
+    </section>
+
+    <section id="game-over-screen" class="overlay screen hidden">
+      <h2 id="game-over-title">Arena Complete</h2>
+      <p id="game-over-summary"></p>
+      <button id="restart-btn" class="btn primary">Play Again</button>
+    </section>
+
+    <section class="hud" id="hud">
+      <div><span>Robot:</span> <strong id="hud-name">-</strong></div>
+      <div><span>Health:</span> <strong id="hud-health">0 / 0</strong></div>
+      <div><span>Scrap:</span> <strong id="hud-scrap">0</strong></div>
+      <div><span>Round:</span> <strong id="hud-round">0</strong></div>
+      <div><span>Status:</span> <strong id="hud-status">Standby</strong></div>
+    </section>
+
+    <section id="mobile-controls" class="mobile-controls hidden" aria-label="Touch controls">
+      <div class="move-pad" id="move-pad">
+        <button data-dir="up">▲</button>
+        <button data-dir="left">◀</button>
+        <button data-dir="down">▼</button>
+        <button data-dir="right">▶</button>
+      </div>
+      <button id="fire-btn" class="btn primary fire-btn">Fire</button>
+    </section>
+  </main>
+
+  <script type="module" src="./assets/js/main.js"></script>
 </body>
 </html>
-
